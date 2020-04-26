@@ -105,9 +105,14 @@ export default new Vuex.Store({
     }, noteId) {
       console.log(noteId.bugId, "this from the store");
       api.post('notes/', noteId)
-        .then(serverBoard => {
+        .then(serverBug => {
           dispatch('getNote', noteId.bugId)
         })
     },
+
+    async deleteNote({commit,dispatch}, noteData){
+        let res = await api.delete('notes/' + noteData.id)
+        dispatch('getNote', noteData.bugId)
+    }
   }
 });

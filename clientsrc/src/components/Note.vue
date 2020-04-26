@@ -9,6 +9,7 @@
 
 
 <script>
+//ANCHOR start on bug edit
 export default {
   name: "note",
   data() {

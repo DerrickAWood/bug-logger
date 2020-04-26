@@ -1,17 +1,17 @@
 <template>
   <div class="bug container-fluid">
     <div class="row">
-      <div class="col-12">
+      <div class="col-4 card m-2 shadow-lg">
         <h2>{{bug.creatorEmail}}</h2>
         <h3>{{bug.title}}</h3>
         <p>{{bug.description}}</p>
         <p>closed: {{bug.closed}}</p>
         <p>{{bug.closedDate}}</p>
       </div>
-      <create-Note></create-Note>
-    </div>
-    <div class="row">
-      <Note class="col-3" v-for="note in notes" :noteData="note" :key="note._id"></Note>
+      <div class="col-4">
+      <create-Note class="ml-1"></create-Note>
+      <Note v-for="note in notes" :noteData="note" :key="note._id"></Note>
+      </div>
     </div>
   </div>
 </template>
