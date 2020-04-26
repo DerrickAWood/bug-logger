@@ -86,6 +86,14 @@ export default new Vuex.Store({
         })
     },
 
+    async editBug({commit, dispatch}, payload){
+      try {
+        console.log(payload);
+        let res = await api.put('bugs/' + payload.id, payload)
+      } catch (error) {
+        console.log(error)
+      }
+    },
 
 
     getNote({

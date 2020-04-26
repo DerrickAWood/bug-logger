@@ -7,6 +7,8 @@
         <p>{{bug.description}}</p>
         <p>closed: {{bug.closed}}</p>
         <p>{{bug.closedDate}}</p>
+        <button class="btn btn-success m-2" @click="openEditor = !openEditor">Open editor</button>
+    <edit-bug v-if="openEditor"></edit-bug>
       </div>
       <div class="col-4">
       <create-Note class="ml-1"></create-Note>
@@ -17,12 +19,15 @@
 </template>
 
 <script>
+import EditBug from "../components/EditBug"
 import Note from "../components/Note"
 import CreateNote from "../components/CreateNote";
 export default {
   name: "bug",
   data() {
-    return {};
+    return {
+      openEditor: false
+    };
   },
   mounted() {
     this.$store.dispatch("getBug", this.$route.params.bugId);
@@ -31,7 +36,7 @@ export default {
   computed: {
     bug() {
       //FIXME This does not work on page reload because the activeBoard is empty in the store
-      return this.$store.state.activeBug;
+      return this.$store.state.activeBug
     },
     notes() {
       return this.$store.state.notes;
@@ -39,6 +44,6 @@ export default {
   },
   props: ["bugId"],
   methods: {},
-  components: { CreateNote, Note }
+  components: { CreateNote, Note, EditBug }
 };
 </script>
