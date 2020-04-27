@@ -59,8 +59,8 @@ export default new Vuex.Store({
 
 
 
-    getBugs({commit,dispatch}) {
-      api.get('bugs')
+    async getBugs({commit,dispatch}) {
+      await api.get('bugs')
         .then(res => {
           commit('setBugs', res.data)
           console.log(res.data);
@@ -68,8 +68,8 @@ export default new Vuex.Store({
         })
     },
 
-    getBug({commit,dispatch}, bugId) {
-      api.get('bugs/' + bugId)
+    async getBug({commit,dispatch}, bugId) {
+      await api.get('bugs/' + bugId)
         .then(res => {
           commit('setActiveBug', res.data)
           console.log(bugId);
@@ -78,9 +78,9 @@ export default new Vuex.Store({
     },
 
 
-    addBug({commit, dispatch}, bugData) {
+    async addBug({commit, dispatch}, bugData) {
       console.log(bugData);
-      api.post('bugs', bugData)
+      await api.post('bugs', bugData)
         .then(serverBug => {
           dispatch('getBugs')
         })
@@ -96,31 +96,51 @@ export default new Vuex.Store({
     },
 
 
-    getNote({
+    // FIXME
+    async closeBug({commit, dispatch}, payload){
+      let ask = confirm("Are You Sure?")
+      if(ask){
+        try {
+          console.log(payload);
+          let res = await api.put('bugs/' + payload.id, {closed: payload.closed = true}, payload)
+        } catch (error) {
+          console.log(error)
+        }
+      }
+    },
+
+
+
+    async getNote({
       commit,
       dispatch
     }, bugId) {
-      api.get('bugs/' + bugId + '/notes')
+      await api.get('bugs/' + bugId + '/notes')
         .then(res => {
           commit('setNotes', res.data)
           console.log(res.data);
         })
     },
 
-    addNote({
+    async addNote({
       commit,
       dispatch
     }, noteId) {
       console.log(noteId.bugId, "this from the store");
-      api.post('notes/', noteId)
+      await api.post('notes/', noteId)
         .then(serverBug => {
           dispatch('getNote', noteId.bugId)
         })
     },
 
     async deleteNote({commit,dispatch}, noteData){
+      let ask = confirm("Are You Sure?")
+      if(ask){
         let res = await api.delete('notes/' + noteData.id)
         dispatch('getNote', noteData.bugId)
+      } else{
+        return
+      }
     }
   }
 });

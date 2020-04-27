@@ -20,7 +20,9 @@ export default {
     };
   },
   methods: {
+    // FIXME fix router 
     addBug() {
+      this.$route.push({ name: "bugs/" + this.newBug.id });
       this.$store.dispatch("addBug", this.newBug);
       this.newBoard = { title: "", description: "" };
     }

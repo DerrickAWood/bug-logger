@@ -6,10 +6,6 @@
       <router-link
         :to="{name: 'bug', params: {bugId: bug.id}}"
       >{{bug.title}}</router-link>
-      <button
-        class="btn btn-sm btn-danger m-2"
-        v-if="$auth.userInfo.email == bug.creatorEmail"
-      >Close</button>
     </div>
   </div>
 </template>
@@ -31,11 +27,6 @@ export default {
     }
   },
   methods: {
-    // deleteBoard(board) {
-    //   debugger;
-    //   //this.$route.push({ name: "Boards" });
-    //   this.$store.dispatch("deleteBoard", board.id);
-    // }
   },
   components: { CreateBug }
 };
