@@ -8,14 +8,14 @@
         <p>closed: {{bug.closed}}</p>
         <p>{{bug.closedDate}}</p>
         <button v-show="bug.closed !== true" class="btn btn-success m-2" @click="openEditor = !openEditor">Open editor</button>
-        <button @click="closeBug(bug)"
+        <button  v-show="bug.closed !== true" @click="closeBug(bug)"
         class="btn btn-sm btn-danger m-2"
         v-if="$auth.userInfo.email == bug.creatorEmail"
       >Close</button>
     <edit-bug v-if="openEditor"></edit-bug>
       </div>
       <div class="col-4">
-      <create-Note class="ml-1"></create-Note>
+      <create-Note  v-show="bug.closed !== true" class="ml-1"></create-Note>
       <Note v-for="note in notes" :noteData="note" :key="note._id"></Note>
       </div>
     </div>

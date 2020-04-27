@@ -123,7 +123,7 @@ Delete
 - Bugs can be filtered by their status
   - Creating a new bug automatically navigates to the BugDetails view
   - Navbar to allow navigating back to Home view
-- Styling Indication on main page that bug is closed (color, strike-through, etc.)
+  - Styling Indication on main page that bug is closed (color, strike-through, etc.)
 - Bugs display last modified date
 
 ### Functionality

@@ -6,6 +6,7 @@
       <router-link
         :to="{name: 'bug', params: {bugId: bug.id}}"
       >{{bug.title}}</router-link>
+      <span v-show="bug.closed == true" class="bg-danger">X</span>
     </div>
   </div>
 </template>
