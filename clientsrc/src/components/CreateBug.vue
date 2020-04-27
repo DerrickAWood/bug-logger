@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit.prevent="addBug">
+    <form @submit.prevent="addBug()">
       <input class="m-2" type="text" placeholder="whats the bug" v-model="newBug.title" required />
       <input type="text" placeholder="description" v-model="newBug.description" />
       <button class="btn btn-sm btn-primary m-2" type="submit">Post Bug</button>
@@ -16,13 +16,17 @@ export default {
       newBug: {
         title: "",
         description: ""
-      }
+      },
     };
+  },
+  computed: {
+    activeBug() {
+      return this.$store.state.activeBug;
+    }
   },
   methods: {
     // FIXME fix router 
-    addBug() {
-      this.$route.push({ name: "bugs/" + this.newBug.id });
+    addBug(bugId) {
       this.$store.dispatch("addBug", this.newBug);
       this.newBoard = { title: "", description: "" };
     }

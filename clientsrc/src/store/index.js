@@ -81,9 +81,10 @@ export default new Vuex.Store({
     async addBug({commit, dispatch}, bugData) {
       console.log(bugData);
       await api.post('bugs', bugData)
-        .then(serverBug => {
-          dispatch('getBugs')
-        })
+      .then(serverBug => {
+        dispatch('getBugs')
+        router.push({ path: "bugs/" + serverBug.data.id});
+      })
     },
 
     async editBug({commit, dispatch}, payload){
