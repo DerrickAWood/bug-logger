@@ -1,12 +1,13 @@
 <template>
   <div class="bug container-fluid">
     <div class="row">
-      <div class="col-4 card m-2 shadow-lg">
-        <h2>{{bug.creatorEmail}}</h2>
-        <h3>{{bug.title}}</h3>
-        <p>{{bug.description}}</p>
+      <div class=" col-md-4 card m-2 shadow-lg">
+        <h2>Created By: {{bug.creatorEmail}}</h2>
+        <h3>Title: {{bug.title}}</h3>
+        <h3>Description: {{bug.description}}</h3>
         <p>closed: {{bug.closed}}</p>
-        <p>{{bug.closedDate}}</p>
+        <p>Date: {{bug.createdAt}}</p>
+        <p>Date Updated:{{bug.updatedAt}}</p>
         <button v-show="bug.closed !== true" class="btn btn-success m-2" @click="openEditor = !openEditor">Open editor</button>
         <button  v-show="bug.closed !== true" @click="closeBug(bug)"
         class="btn btn-sm btn-danger m-2"
@@ -14,7 +15,7 @@
       >Close</button>
     <edit-bug v-if="openEditor"></edit-bug>
       </div>
-      <div class="col-4">
+      <div class="col-md-4">
       <create-Note  v-show="bug.closed !== true" class="ml-1"></create-Note>
       <Note v-for="note in notes" :noteData="note" :key="note._id"></Note>
       </div>

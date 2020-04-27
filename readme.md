@@ -124,7 +124,7 @@ Delete
   - Creating a new bug automatically navigates to the BugDetails view
   - Navbar to allow navigating back to Home view
   - Styling Indication on main page that bug is closed (color, strike-through, etc.)
-- Bugs display last modified date
+  - Bugs display last modified date
 
 ### Functionality
 
