@@ -7,7 +7,7 @@
         <p>{{bug.description}}</p>
         <p>closed: {{bug.closed}}</p>
         <p>{{bug.closedDate}}</p>
-        <button class="btn btn-success m-2" @click="openEditor = !openEditor">Open editor</button>
+        <button v-show="bug.closed !== true" class="btn btn-success m-2" @click="openEditor = !openEditor">Open editor</button>
         <button @click="closeBug(bug)"
         class="btn btn-sm btn-danger m-2"
         v-if="$auth.userInfo.email == bug.creatorEmail"

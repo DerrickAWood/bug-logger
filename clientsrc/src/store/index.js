@@ -95,8 +95,6 @@ export default new Vuex.Store({
       }
     },
 
-
-    // FIXME
     async closeBug({commit, dispatch}, payload){
       let ask = confirm("Are You Sure?")
       if(ask){
@@ -108,8 +106,6 @@ export default new Vuex.Store({
         }
       }
     },
-
-
 
     async getNote({
       commit,

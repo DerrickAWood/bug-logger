@@ -131,7 +131,7 @@ Delete
   - Users Can Register, Login, and Logout (this should work out of the box, don't break it)
   - Users can only modify/delete data they created
   - Bugs can be created from the Home view
-- Bugs can be closed from the BugDetails view
+  - Bugs can be closed from the BugDetails view
   - User is prompted "are you sure?" when closing a Bug
   - Notes can be added and removed from a bug in the BugDetails view
   - User prompt to remove Note from Bug
