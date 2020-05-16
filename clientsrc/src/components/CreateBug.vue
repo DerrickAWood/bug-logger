@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit.prevent="addBug()">
+    <form v-if="$auth.isAuthenticated" @submit.prevent="addBug()">
       <input class="m-2" type="text" placeholder="whats the bug" v-model="newBug.title" required />
       <input type="text" placeholder="description" v-model="newBug.description" />
       <button class="btn btn-sm btn-primary m-2" type="submit">Post Bug</button>
@@ -25,10 +25,9 @@ export default {
     }
   },
   methods: {
-    // FIXME fix router 
     addBug(bugId) {
-      this.$store.dispatch("addBug", this.newBug);
-      this.newBoard = { title: "", description: "" };
+        this.$store.dispatch("addBug", this.newBug);
+        this.newBoard = { title: "", description: "" };
     }
   }
 };
